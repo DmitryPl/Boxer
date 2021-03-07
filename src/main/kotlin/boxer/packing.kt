@@ -12,7 +12,7 @@ class PackingSolver(
     private var root = PackingNode(0, track, orders, alpha = alpha, betta = betta, gamma = gamma)
     private var solution = root
 
-    fun solution(): List<Order> = root.solution()
+    fun solution(): List<Order> = solution.solution()
 
     fun solve(seconds: Long = 20) {
         root.logger()
