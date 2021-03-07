@@ -1,0 +1,27 @@
+{
+    "seconds": 500,
+    "alpha": 0.44,
+    "betta": 0.33,
+    "gamma": 0.333,
+    "track": {
+        "value_capacity": 444444.0,
+        "lifting_capacity": 4444.0,
+        "width": 444.0,
+        "height": 444.0,
+        "length": 44444.0
+    },
+    "orders": [
+        {
+            "order_id": 11,
+            "box": {
+                "width": 444.0,
+                "height": 444.0,
+                "length": 44444.0
+            },
+            "value": 444.0,
+            "weight": 333.0,
+            "fragility": true,
+            "vertical": true
+        }
+    ]
+}

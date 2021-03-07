@@ -2,29 +2,28 @@ package boxer
 
 
 class PackingSolver(
-    private val track: Track, // грузовик
-    private val orders: List<Order>, // все заказы
+    private val inputData: InputData,
     alpha: Double = 0.8,  // поддерживающая площадь
     betta: Double = 0.5,  // длина достижимости
-    gamma: Int = 0,  // кол-во попыток на груз
+    gamma: Int = 0  // кол-во попыток на груз
 ) {
     private var bestState = 0
-    private var root = PackingNode(0, track, orders, alpha = alpha, betta = betta, gamma = gamma)
+    private var root = PackingNode(0, inputData.track, inputData.orders, alpha = inputData.alpha, betta = inputData.betta, gamma = inputData.gamma)
     private var solution = root
 
     fun solution(): List<Order> = solution.solution()
 
-    fun solve(seconds: Long = 20) {
+    fun solve(inputData: InputData) {
         root.logger()
-        val workTime = seconds * 1e9
+        val workTime = inputData!!.seconds * 1e9
         val start = System.nanoTime()
         var node: PackingNode? = root
         var i = 0
         println()
-        println(track)
+        println(inputData!!.track)
 
         while (root.state() != 2 && (System.nanoTime() - start) < workTime) {
-            if (node == null || node.level() == orders.size) break
+            if (node == null || node.level() == inputData!!.orders.size) break
 
             if (!node.checkStep()) {
                 node = node.goBack()  // откатываемся назад
@@ -59,7 +58,7 @@ class PackingNode(
     private val prevNode: PackingNode? = null,
     private val alpha: Double = 0.8,  // поддерживающая площадь
     private val betta: Double = 0.5,  // длина достижимости
-    private val gamma: Int = 0,  // кол-во попыток на груз
+    private val gamma: Int = 0  // кол-во попыток на груз
 ) {
     data class Chance(val coords: List<Vec3>, val order: Order) // представление следующего шага
 
@@ -108,7 +107,7 @@ class PackingNode(
             gamma = gamma,
             prevNode = this,
             extremePoints = newPoints,
-            currentSolution = newSolution,
+            currentSolution = newSolution
         )
 
         currentState++

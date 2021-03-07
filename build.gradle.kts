@@ -16,6 +16,7 @@ dependencies {
     testImplementation(kotlin("test-junit5"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
+    implementation ("com.fasterxml.jackson.module:jackson-module-kotlin:2.11.2")
     implementation(kotlin("stdlib-jdk8"))
 }
 

@@ -2,10 +2,6 @@ package boxer
 
 import kotlin.random.Random
 
-fun smallTrack(): Track {
-    return Track(13.5, 2000.0, 1.860, 1.927, 3.145)
-}
-
 fun randomOrder(track: Track, order_id: Int = 0, fragility: Boolean = false): Order {
     fun randSize(size: Double): Double = Random.nextDouble(10.0, size * 1e3) / 1e3
 
