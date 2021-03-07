@@ -9,10 +9,10 @@ import java.io.IOException
 
 
 fun main(args: Array<String>) {
-    val inputData = getInputData("C:\\Users\\yakov\\IdeaProjects\\Boxer\\src\\main\\input.txt")
+    val inputData = getInputData(args.get(0))
     val solver = PackingSolver(inputData!!)
     solver.solve(inputData)
-    writeOutputData(solver.solution(), "C:\\Users\\yakov\\IdeaProjects\\Boxer\\src\\main\\output.txt")
+    writeOutputData(solver.solution(), args[1])
 }
 
 fun writeOutputData(orders: List<Order>, outputFilePath: String) {
